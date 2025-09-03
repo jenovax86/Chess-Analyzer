@@ -9,6 +9,11 @@
  - Estimates your win and loss.
 
 
+## Requirements
+### You need the Stockfish engine in your folder path
+### Download the suitable [Stockfish](https://stockfishchess.org/download/) program for your os.
+
+
 ## How to use:
 ```bash
 git clone https://github.com/jenovax86/Chess-Analyzer.git
