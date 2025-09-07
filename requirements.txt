@@ -1,0 +1,6 @@
+matplotlib
+pandas
+python-chess
+seaborn
+dotenv
+requests
