@@ -3,11 +3,15 @@ import chess.engine
 import chess.pgn
 import pandas as pd
 import chess
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CSV = pd.read_csv("../data/data.csv")
 CENTI_PAWN_LOSS_THRESHOLD = 50
 ANALYZE_DEPTH = 23
-ENGINE_PATH = r"../stockfish/stockfish-windows-x86-64-avx2.exe"
+ENGINE_PATH = os.getenv("STOCKFISH_PATH")
 
 Engine = chess.engine.SimpleEngine.popen_uci(ENGINE_PATH)
 

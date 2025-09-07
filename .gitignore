@@ -1,0 +1,5 @@
+.env
+stockfish
+.ipynb_checkpoints
+src/ipynb_checkpoints
+src/__pycache__
