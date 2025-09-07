@@ -1,5 +1,5 @@
 .env
 stockfish
 .ipynb_checkpoints
-src/__pycache__
+src/chess_assistant/__pycache__
 notebooks/ipynb_checkpoints
