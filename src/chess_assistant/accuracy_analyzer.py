@@ -1,7 +1,6 @@
 from io import StringIO
 import chess.engine
 import chess.pgn
-import pandas as pd
 import chess
 import os
 from dotenv import load_dotenv
@@ -54,6 +53,7 @@ def get_accuracy_by_time_class(time_class, dataFrame, target_username):
     for accuracy in accuracies:
         mean += accuracy
 
+    Engine.close()
     return mean / len(accuracies)
 
 

@@ -3,6 +3,7 @@ import pandas as pd
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
+
 def get_player_stats(username):
     STATS_URL = f"https://api.chess.com/pub/player/{username}/stats"
     response = requests.get(STATS_URL, headers=HEADERS)
@@ -72,4 +73,6 @@ def get_player_info(username):
                 }
             )
         return pd.DataFrame(all_games)
+
+
 
