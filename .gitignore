@@ -1,6 +1,5 @@
 .env
 stockfish
 .ipynb_checkpoints
-src/ipynb_checkpoints
 src/__pycache__
 notebooks/ipynb_checkpoints
