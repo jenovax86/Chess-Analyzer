@@ -11,7 +11,7 @@
 - Show accuracy in all ofthe  time classes and show which time class you have a better accuracy
 
 ## Prerequisites
-### You need [StockFish Engine](https://stockfishchess.org/download/) for your operating system.c
+### You need [StockFish Engine](https://stockfishchess.org/download/) for your operating system.
 
 ### Install the required Python libraries:
 ```bash
