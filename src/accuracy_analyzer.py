@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-CSV = pd.read_csv("../data/data.csv")
 CENTI_PAWN_LOSS_THRESHOLD = 50
 ANALYZE_DEPTH = 23
 ENGINE_PATH = os.getenv("STOCKFISH_PATH")
@@ -82,34 +81,4 @@ def analyze_game(game, target_color):
 
     return (correct_moves / total_moves) * 100
 
-
-def get_head_to_head_games(dataframe, target_player, opponent):
-    if not opponent:
-        return "There is no opponent specified"
-
-    return dataframe[
-        ((dataframe["white"] == target_player) & (dataframe["black"] == opponent))
-        | ((dataframe["black"] == target_player) & (dataframe["white"] == opponent))
-    ]
-
-
-def get_accuracy_per_game(dataframe, target_player, opponent):
-    target_player_game = get_head_to_head_games(dataframe, target_player, opponent)
-
-    if target_player_game.empty:
-        raise ValueError("No games found between these players.")
-
-    white_player = target_player_game["white"].values[0].strip().lower()
-    black_player = target_player_game["black"].values[0].strip().lower()
-    requested_opponent = opponent.strip().lower()
-
-    if requested_opponent == white_player or requested_opponent == black_player:
-        target_color = "white" if white_player == target_player else "black"
-        current_game = chess.pgn.read_game(
-            StringIO(target_player_game["pgn"].values[0])
-        )
-        result = analyze_game(current_game, target_color)
-        return result
-    else:
-        raise ValueError("There is no opponent with this name")
 
