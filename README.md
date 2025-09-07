@@ -29,7 +29,7 @@ git clone https://github.com/jenovax86/Chess-Analyzer.git
 ## For accuracy by time control only
 ```bash
 cd src
-python -m chess_assistant 
+python __main__.py
 ```
 ## For a full analysis with visual plots of your progress
 ```bash
