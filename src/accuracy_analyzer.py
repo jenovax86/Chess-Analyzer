@@ -11,8 +11,7 @@ CENTI_PAWN_LOSS_THRESHOLD = 50
 ANALYZE_DEPTH = 23
 ENGINE_PATH = os.getenv("STOCKFISH_PATH")
 
-Engine = chess.engine.SimpleEngine.popen_uci(ENGINE_PATH)
-
+ENGINE = chess.engine.SimpleEngine.popen_uci(ENGINE_PATH)
 
 def calculate_centi_pawn_loss(analyze, target_color):
     return (
@@ -53,7 +52,7 @@ def get_accuracy_by_time_class(time_class, dataFrame, target_username):
     for accuracy in accuracies:
         mean += accuracy
 
-    Engine.close()
+    ENGINE.close()
     return mean / len(accuracies)
 
 
@@ -62,7 +61,7 @@ def analyze_game(game, target_color):
     moves = game.mainline_moves()
     correct_moves = 0
     total_moves = 0
-    last_analyze = Engine.analyse(
+    last_analyze = ENGINE.analyse(
         current_board, chess.engine.Limit(depth=ANALYZE_DEPTH)
     )
     for _, move in enumerate(moves):
@@ -73,12 +72,11 @@ def analyze_game(game, target_color):
         total_moves += 1
         centi_pawn_loss_before = calculate_centi_pawn_loss(last_analyze, target_color)
         current_board.push(move)
-        last_analyze = Engine.analyse(current_board, chess.engine.Limit(depth=15))
+        last_analyze = ENGINE.analyse(current_board, chess.engine.Limit(depth=15))
         centi_pawn_loss_after = calculate_centi_pawn_loss(last_analyze, target_color)
         centi_pawn_loss = centi_pawn_loss_before - centi_pawn_loss_after
         if is_correct_move(abs(centi_pawn_loss)):
             correct_moves += 1
 
     return (correct_moves / total_moves) * 100
-
 
