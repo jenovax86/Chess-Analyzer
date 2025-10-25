@@ -50,7 +50,7 @@ def extract_username(player_field):
 def get_player_info(username):
     all_games = []
     archived_games = get_player_archived_games(username)
-    for url in archived_games[-4:]:
+    for url in archived_games:
         requested_games = get_player_games(url)
         for game in requested_games:
             white_player = extract_username(game.get("white"))
@@ -73,6 +73,3 @@ def get_player_info(username):
                 }
             )
         return pd.DataFrame(all_games)
-
-
-

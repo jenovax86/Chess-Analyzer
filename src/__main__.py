@@ -1,6 +1,8 @@
 from fetch_games import get_player_info
 from accuracy_analyzer import get_accuracy_by_time_class
+from dotenv import load_dotenv
 
+load_dotenv()
 CHESS_DOT_COM_USERNAME = "Invalid_dude"
 CHESS_TIME_CLASS = "bullet"
 

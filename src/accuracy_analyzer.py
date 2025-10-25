@@ -3,9 +3,6 @@ import chess.engine
 import chess.pgn
 import chess
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 CENTI_PAWN_LOSS_THRESHOLD = 50
 ANALYZE_DEPTH = 23
